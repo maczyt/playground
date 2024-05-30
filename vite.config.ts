@@ -9,6 +9,7 @@ export default defineConfig({
   optimizeDeps: {
     exclude: ["@swc/wasm-web"],
   },
+  base: process.env.NODE_ENV === "development" ? "/" : "/playground",
   build: {
     outDir: "docs",
   },
