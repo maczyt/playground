@@ -9,4 +9,7 @@ export default defineConfig({
   optimizeDeps: {
     exclude: ["@swc/wasm-web"],
   },
+  build: {
+    outDir: "docs",
+  },
 });
