@@ -57,7 +57,7 @@ export default function() {
       >
         <Box>
           <Editor
-            value={valueRef.current}
+            value={value}
             onChange={(v) => {
               valueRef.current = v;
             }}

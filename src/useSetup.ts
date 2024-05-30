@@ -1,7 +1,6 @@
-import { useMonaco } from "@monaco-editor/react";
 import { useEffect } from "react";
-
 import { addExtraLib } from "./helpers";
+import { useMonaco } from "@monaco-editor/react";
 
 const useSetup = () => {
   const monaco = useMonaco();
@@ -19,14 +18,14 @@ const useSetup = () => {
     });
     addExtraLib(monaco);
     monaco.editor.getEditors().forEach((editor) => {
-      const model =
-        monaco.editor.getModel(monaco.Uri.file("file.tsx")) ??
-        monaco.editor.createModel(
+      if (!monaco.editor.getModel(monaco.Uri.file("file.tsx"))) {
+        const model = monaco.editor.createModel(
           "",
           "typescript",
           monaco.Uri.file("file.tsx")
         );
-      editor.setModel(model);
+        editor.setModel(model);
+      }
     });
   }, [monaco]);
 
